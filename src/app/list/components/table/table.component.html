@@ -1,0 +1,31 @@
+<table class="adjustable-table">
+  <thead class="adjustable-table-header-row">
+  <tr>
+    <th [appSort]="'brand'" class="adjustable-table-header-cell">Brand</th>
+    <th [appSort]="'model'" class="adjustable-table-header-cell">Model</th>
+    <th [appSort]="'date'" class="adjustable-table-header-cell">Date</th>
+    <th class="adjustable-table-header-cell">Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr
+      *ngFor="let car of carList; trackBy: trackByFn"
+      class="adjustable-table-row"
+    >
+      <td (click)="onOpenCar(car)" class="adjustable-table-cell" >{{ car.brand }}</td>
+      <td (click)="onOpenCar(car)" class="adjustable-table-cell">{{ car.model }}</td>
+      <td (click)="onOpenCar(car)" class="adjustable-table-cell">{{ car.date | date: 'mediumDate' : 'UTC' }}</td>
+
+      <td class="adjustable-table-cell">
+        <button
+          (click)="onRemoveCar(car.id)"
+          color="primary"
+          type="button"
+          mat-icon-button
+        >
+          <mat-icon>remove</mat-icon>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-md-6">
+    <button
+      (click)="openDialog(action.ADD)"
+      color="primary"
+      type="button"
+      mat-icon-button
+    >
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+
+  <div class="col-md-6">
+    <app-filter (valueChange)="onValueChange($event)"></app-filter>
+  </div>
+</div>
+
+<div class="row">
+  <app-table
+    (changeSort)="onChangeSort($event)"
+    (openCar)="openDialog(action.EDIT, $event)"
+    (removeCar)="onRemoveCar($event)"
+    [carList]="carList$ | async"
+  >
+  </app-table>
+</div>
