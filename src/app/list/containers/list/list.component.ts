@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { filter } from 'rxjs/operators';
 
 import { Action } from '../../enums/action.enum';
 import { ActionDialogComponent } from '../../components/action-dialog/action-dialog.component';
@@ -34,7 +35,9 @@ export class ListComponent {
           }
         }
       )
-      .afterClosed().subscribe((outputCar: Car) => {
+      .afterClosed()
+      .pipe(filter(outputCar => !!outputCar))
+      .subscribe((outputCar: Car) => {
         if (action === Action.ADD) {
           this.carListService.add({
             id: this.carList$.getValue().length,
