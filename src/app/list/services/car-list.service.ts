@@ -26,7 +26,8 @@ export class CarListService {
   }
 
   edit(car: Car): void {
-    this.dataSource[car.id] = car;
+    const index = this.dataSource.findIndex(item => item.id === car.id);
+    this.dataSource[index] = car;
     this.carList$.next(this.dataSource);
   }
 
