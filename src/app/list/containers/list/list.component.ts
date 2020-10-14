@@ -6,6 +6,7 @@ import { Action } from '../../enums/action.enum';
 import { ActionDialogComponent } from '../../components/action-dialog/action-dialog.component';
 import { Car } from '../../interfaces/car.interface';
 import { CarListService } from '../../services/car-list.service';
+import { generateID } from '../../utils/id-generator.util';
 import { Sort } from '../../interfaces/sort.interface';
 
 @Component({
@@ -40,7 +41,7 @@ export class ListComponent {
       .subscribe((outputCar: Car) => {
         if (action === Action.ADD) {
           this.carListService.add({
-            id: this.carList$.getValue().length,
+            id: generateID(),
             ...outputCar
           });
 
