@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 import { Car } from '../interfaces/car.interface';
-import {filterItemsByValue, sortItems} from '../utils/data-operations.util';
+import { filterItemsByValue, sortItems } from '../utils/data-operations.util';
 import { Sort } from '../interfaces/sort.interface';
 
 @Injectable({
